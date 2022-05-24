@@ -1,6 +1,7 @@
 <template>
   <div class="dialog" v-if="showConfirm">
     <h1>Dialog</h1>
+    <button @click="getData">获取数据</button>
   </div>
 </template>
 
@@ -9,6 +10,7 @@ export default {
   data() {
     return {
       showConfirm: false, // 控制弹框显示和隐藏
+      message: "消息",
     };
   },
   watch: {
@@ -19,7 +21,19 @@ export default {
   },
 
   components: {},
-  methods: {},
+  methods: {
+    getMessage() {
+      return this.message;
+    },
+
+    getData() {
+      this.axios
+        .get("https://jsonplaceholder.typicode.com/todos/1")
+        .then((res) => {
+          this.message = res;
+        });
+    },
+  },
   props: {
     // 父组件调用通过v-model属性传入
     value: {

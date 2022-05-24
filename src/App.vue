@@ -3,7 +3,9 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>|
-      <router-link to="/componentTest">组件测试</router-link>
+      <router-link to="/componentTest">组件测试|</router-link>
+      <router-link to="/requestTest">请求测试|</router-link>
+      <router-link to="/child">父子组件双向数据绑定</router-link>
     </div>
     <h1>{{ $store.state.age }}</h1>
     <router-view />

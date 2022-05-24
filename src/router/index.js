@@ -17,13 +17,19 @@ const routes = [
   },
   {
     path: "/componentTest",
-    name: "About",
+    name: "ComponentTest",
     component: () => import("../views/ComponentTest.vue"),
   },
   {
     path: "/requestTest",
     name: "RequestTest",
     component: () => import("../views/RequestTest.vue"),
+  },
+  {
+    path: "/child",
+    name: "child",
+    component: () =>
+      import(/* webpackChunkName: "child" */ "../views/child/index.vue"),
   },
 ];
 

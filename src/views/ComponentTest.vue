@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>组件测试页面</h1>
+    <h2>{{ errors }}</h2>
     <button @click="show = !show">切换</button>
     <x-button type="primary" size="large">按钮</x-button>
     <x-button type="primary" size="large">厉害了</x-button>
@@ -14,7 +15,7 @@
       <template #age> 999 </template>
       <template #sex> gril </template>
     </user-card>
-    <x-dialog v-model="show"></x-dialog>
+    <x-dialog ref="myDialog" v-model="show"></x-dialog>
 
     <hr />
   </div>
@@ -29,6 +30,7 @@ export default {
   data() {
     return {
       show: false,
+      errors: "",
     };
   },
   components: { xButton, userCard, xDialog },
@@ -38,6 +40,8 @@ export default {
     Axios.get("https://jsonplaceholder.typicode.com/todos/1").then((res) => {
       this.show = true;
       console.log(res);
+      this.errors = this.$refs.myDialog.getMessage();
+      console.log(this.$refs.myDialog.getMessage());
     });
   },
 };
